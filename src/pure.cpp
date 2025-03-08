@@ -205,8 +205,6 @@ private:
         double angle_error = M_PI*target.theta/180 - current_theta_;
 
         double distance_to_goal = sqrt(pow(current_x_ - paths[target_index_].back().x, 2) + pow(current_y_ - paths[target_index_].back().y, 2));
-        cout<<"back.x: "<<paths[target_index_].back().x<<endl;
-        cout<<"back.y: "<<paths[target_index_].back().y<<endl;
         double linear_vel = linear_pid_.compute(distance_to_goal);
         double angular_vel = angular_pid_.compute(angle_error);
 
