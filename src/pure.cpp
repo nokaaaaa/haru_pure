@@ -201,7 +201,6 @@ private:
         const auto& target = paths[target_index_][current_index_];
         double dx = target.x - current_x_;
         double dy = target.y - current_y_;
-        double distance = sqrt(dx * dx + dy * dy);
         double angle_error = M_PI*target.theta/180 - current_theta_;
 
         double distance_to_goal = sqrt(pow(current_x_ - paths[target_index_].back().x, 2) + pow(current_y_ - paths[target_index_].back().y, 2));
@@ -225,9 +224,9 @@ private:
 
         if(target_index_==0 && abs(dy)<stop_threshold_) stop = true;
         if(target_index_==1 && abs(dx)<stop_threshold_) stop = true;
-        if(target_index_==2 && distance < arrival_threshold_ && abs(angle_error) < theta_threshold_) stop =true;
+        if(target_index_==2 && abs(dy)<stop_threshold_) stop =true;
         if(target_index_==3 && abs(dy)<stop_threshold_) stop = true;
-        if(target_index_==4 && distance < arrival_threshold_ && abs(angle_error) < theta_threshold_)stop =true;
+        if(target_index_==4 && abs(dy)<stop_threshold_)stop =true;
         if (stop) {
 
             //stateが2,4の終わりのときに射出を送る
